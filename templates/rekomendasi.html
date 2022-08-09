@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.rtl.min.css"
+          integrity="sha384-dc2NSrAXbAkjrdm9IYrX10fQq9SDG6Vjz7nQVKdKcJl3pC+k37e7qJR5MVSCS+wR" crossorigin="anonymous">
+
+    <title>Rekomendasi Menu</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="http://localhost:5000/">Rekomendasi Menu</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="http://localhost:5000/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:5000/rekomendasi">Rekomendasi Menu</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5">
+
+    <h1 class="mb-5 text-center">REKOMENDASI MENU</h1>
+
+    <div class="row mb-5">
+
+        {% for rows in menu %}
+        <div class="col-3 mb-5">
+            <div class="card" style="width: 18rem;">
+                <img src={{url_for('static', filename = 'uploadimg/' + rows[2])}} class="card-img-top" height="250px">
+                <div class="card-body">
+                    <h5 class="card-title">{{ rows [1] }}</h5>
+                    <p class="card-text">{{ rows [4] }}</p>
+                    <a href="http://localhost:5000/detail/{{ rows[0] }}" class="btn btn-primary">Detail</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+</div>
+
+</body>
+</html>
